@@ -2,6 +2,8 @@ import os
 
 from flask import Flask
 
+from . import auth, db
+
 
 def create_app(test_config=None):
     # Flaskインスタンスを作成
@@ -29,7 +31,8 @@ def create_app(test_config=None):
     def hello():
         return "hello world"
     
-    from . import db
     db.init_app(app)
+    
+    app.register_blueprint(AuthenticationError.bp)
     
     return app
