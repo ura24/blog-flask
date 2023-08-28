@@ -88,3 +88,15 @@ def logout():
     # セッションをクリアしてログアウト
     session.clear()
     return redirect(url_for('index'))
+
+# ログインが必要なビューを保護するデコレータ関数
+def login_required(view):
+    @functools.wraps(view)
+    def wrapped_view(**kwargs):
+        # ユーザがログインしていない場合、ログインページにリダイレクト
+        if g.user is None:
+            return redirect(url_for('auth.login'))
+        
+        return view(**kwargs)
+    
+    return wrapped_view
