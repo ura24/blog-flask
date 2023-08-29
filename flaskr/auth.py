@@ -52,7 +52,8 @@ def login():
         
         # ユーザ情報の取得
         user = db.execute(
-            'SELECT id, username, password FROM user WHERE username = ?', (username)
+            'SELECT id, username, password FROM user WHERE username = ?',
+            (username,)
         ).fetchone()
         
         # ユーザの存在とパスワードの一致を確認
@@ -82,7 +83,8 @@ def load_logged_in_user():
         g.user = None
     else:
         g.user = get_db().execute(
-            'SELECT id, username, password FROM user WHERE id = ?', (user_id)
+            'SELECT id, username, password FROM user WHERE id = ?',
+            (user_id,)
         ).fetchone()
 
 @bp.route('/logout')

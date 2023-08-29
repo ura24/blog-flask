@@ -51,7 +51,7 @@ def get_post(id, check_author=True):
         FROM post p JOIN user u ON p.author_id = u.id
         WHERE p.id = ?
         """,
-        (id)
+        (id,)
     ).fetchone()
 
     if post is None:
