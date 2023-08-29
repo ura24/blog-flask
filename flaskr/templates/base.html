@@ -11,10 +11,10 @@
     <ul>
         {% if g.user %}
         <li>{{ g.user['username'] }}</li>
-        <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+        <li><a href="{{ url_for('auth.logout') }}">ログアウト</a></li>
         {% else %}
-        <li><a href="{{ url_for('auth.register') }}">Register</a></li>
-        <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+        <li><a href="{{ url_for('auth.register') }}">登録</a></li>
+        <li><a href="{{ url_for('auth.login') }}">ログイン</a></li>
         {% endif %}
     </ul>
 </nav>
